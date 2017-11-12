@@ -5,6 +5,13 @@ class Region {
     this.generated = false;
   }
 
+  static parse(json) {
+    var name = json.region_name,
+      id = json.region_id;
+    // parse parameters
+    return new Region(name, id)
+  }
+
   generate() {
     // generate data for this region
     this.temperature = 15;

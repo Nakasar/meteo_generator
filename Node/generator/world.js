@@ -1,5 +1,6 @@
 'use strict';
 var Region = require("./region");
+var worldjson = require("./data/world_data");
 
 class World {
 
@@ -8,8 +9,12 @@ class World {
   }
 
   createMap() {
-    this.regions.set('Region 1', new Region("Region 1", 1));
-    this.regions.set('Region 2', new Region("Region 2", 2));
+    if (worldjson) {
+      console.log(worldjson);
+      for (var i = 0; i < worldjson.length; i++) {
+        this.regions.set(worldjson[i].region_name, Region.parse(worldjson[i]));
+      }
+    }
   }
 
   generateAll() {
@@ -29,7 +34,7 @@ class World {
     this.regions.forEach(function(value, regionName, map) {
       mapJson[regionName] = value.toJson();
     })
-    
+
     return mapJson;
   }
 
