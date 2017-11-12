@@ -31,6 +31,21 @@ Your server is now running. Access to it on `localhost:3000/`.
 | **/all** | GET   | Get full world meteo as json. |
 | **/\<regionId\>** | GET | Get meteo as json for the given region. |
 
+### World creation
+The world is created upon a written json file on the server. It contains a list of region with their parameters.
+```javascript
+[
+  {
+    region_name: "Queensdale",
+    region_id: 1
+  },
+  {
+    region_name: "Rata Sum",
+    region_id: 16
+  },
+]
+```
+
 ### Data Format
 All endpoints returns json data containing a boplean success field.
 
@@ -56,7 +71,7 @@ When requesting meteo for a given region, you will receive a json containing the
 ```
 
 When requesting the `/all` endpoint, or several regions, you will recieved a json Object indexed by the names of regions :
-```
+```javascript
 [
   "Queensdale" : {
   {
