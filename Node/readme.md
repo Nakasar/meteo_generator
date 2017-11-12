@@ -18,7 +18,7 @@ Usage
 -----
 ### Starting server
 * **For developpment :** Open a system terminal, navigate to the cloned folder, and type `npm run start`.
-* **For production :** I recommend using forever to run your script. Install forever using `npm instann -g forever` then start server using `forever start server.js`.
+* **For production :** I recommend using forever to run your script. Install forever using `npm install -g forever` then start server using `forever start server.js`.
 
 Your server is now running. Access to it on `localhost:3000/`.
 
