@@ -1,3 +1,5 @@
+![Banner](https://media.discordapp.net/attachments/354756841932324864/354757799034486785/Brush_Prieure_de_Durmand.png)
+
 NodeJS Meteo Generator
 ======================
 
