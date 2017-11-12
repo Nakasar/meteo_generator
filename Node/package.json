@@ -1,0 +1,33 @@
+{
+  "name": "gw2_meteo_generator",
+  "version": "1.0.0",
+  "description": "A meteorological generator for GW2.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nakasar/meteo_generator.git"
+  },
+  "keywords": [
+    "Meteo",
+    "Generator",
+    "GW2RP_Tools",
+    "RP",
+    "GW2"
+  ],
+  "author": "Nakasar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nakasar/meteo_generator/issues"
+  },
+  "homepage": "https://github.com/Nakasar/meteo_generator#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}
