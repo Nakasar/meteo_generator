@@ -3,7 +3,7 @@ from tkinter import *
 
 ## Map
 def generateMap(height, width) :
-    return [[0 for i in range(height)] for j in range(width)]
+    return [[0 for i in range(width)] for j in range(height)]
 
 def resetMap(map, probabilityOfRain) :
     for i in range(len(map)) :
@@ -59,6 +59,17 @@ def computeCellsState(map) :
             else :
                 processedMap[x][y] = 1
     return processedMap
+
+def addOneDay(map) :
+    newMap = [[0 for i in range(len(map[j]))] for j in range(len(map))]
+    
+    for x in range(1, len(map) - 1) :
+        for y in range(1, len(map[x]) - 1) :
+            dx = random.randrange(-1, 2)
+            dy = random.randrange(-1, 2)
+            newMap[x + dx][y + dy] = map[x][y] 
+    
+    return newMap
             
 ## drawing
 def drawMap(canvas, map, pixelSize) :
@@ -82,7 +93,7 @@ def drawMap(canvas, map, pixelSize) :
     
 
 ## test
-width = 100
+width = 200
 height = 100
 
 ## Interface
@@ -106,6 +117,15 @@ def generateClicked() :
     map = step(map, 7, 7)
     drawMap(mapCanvas, computeCellsState(map), pixelSize)
 
+def dayClicked() :
+    global pixelSize
+    global mapCanvas
+    global map
+    map = addOneDay(map)
+    for id in mapCanvas.find_all() :
+        mapCanvas.delete(id)
+    drawMap(mapCanvas, computeCellsState(map), pixelSize)
+
 pixelSize = 5
 window = Tk()
 
@@ -120,6 +140,9 @@ resetButton.pack()
 
 stepButton = Button(window, text="Iterate", command=stepClicked)
 stepButton.pack()
+
+dayButton = Button(window, text="Next Day", command=dayClicked)
+dayButton.pack()
 
 legend = Canvas(window, width=90, height = 80, background="white")
 legend.create_rectangle(0, 0, 20, 20, fill="lightblue")
