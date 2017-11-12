@@ -35,13 +35,30 @@ The world is created upon a written json file on the server. It contains a list 
 ```javascript
 [
   {
-    region_name: "Queensdale",
-    region_id: 1
+    "region_name": "Krytia",
+    "region_id": 1,
+    "seasons": [
+      {
+        "season_name" : "Summer",
+        "max_temperature": 30,
+        "min_temperature": 10,
+        "skies": [
+          {
+            "name": "Sunny",
+            "probability": 0.753
+          },
+          {
+            "name": "Rainy",
+            "probability": 0.125
+          }
+        ]
+      }
+    ]
   },
   {
-    region_name: "Rata Sum",
-    region_id: 16
-  },
+    "region_name": "Ascalon",
+    "region_id": 16
+  }
 ]
 ```
 
