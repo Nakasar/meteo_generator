@@ -26,7 +26,6 @@ Your server is now running. Access to it on `localhost:3000/`.
 | address | method | description |
 | ------- | ------ | ----------- |
 | **/**   | GET    | Check if server is up and running ! |
-| **/create** | POST | Request creation of the world. The creation is automatic at server launch. But you can reset the world using this endpoint. |
 | **/reset** | POST | Reset meteo from scratch. |
 | **/all** | GET   | Get full world meteo as json. |
 | **/\<regionId\>** | GET | Get meteo as json for the given region. |
