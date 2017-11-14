@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/Nakasar/meteo_generator#readme",
   "dependencies": {
+    "cors": "^2.8.4",
     "express": "^4.16.2"
   },
   "devDependencies": {

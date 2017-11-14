@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+
+  <title>GW2RP Tools - Meteo</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+</head>
+<body>
+  <div id="container">
+    <h1>Meteo</h1>
+    <table class="table" id="meteo-table">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Region</th>
+          <th scope="col">Temperature</th>
+          <th scope="col">Sky</th>
+          <th scope="col">Wind</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+
+    <div id="container">
+      <button class="btn btn-danger" type="submit" onClick="reset()">Reset</button>
+      <button class="btn btn-success" type="submit" onClick="generate()">Generate</button>
+      <button class="btn btn-outline-primary" type="submit" onClick="next()">Next Day</button>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+  <script>
+  $.ajax({
+    method: "GET",
+    url: 'http://localhost:3000/all',
+    dataType: 'json',
+    success: function(json) {
+      if (json.success) {
+        var meteo = json.meteo;
+        console.log(meteo);
+        parseMeteo(meteo)
+      }
+    }
+  });
+
+  function parseMeteo(meteo) {
+    $('#meteo-table > tbody > tr').remove();
+    for(var region in meteo) {
+      var regionMeteo = meteo[region];
+      var regionHtml = '<tr>';
+      regionHtml += '<th scope="col">' + regionMeteo.region_id + '</th>';
+      regionHtml += '<td>' + regionMeteo.region_name + '</td>';
+      regionHtml += '<td>' + regionMeteo.temperature + '</td>';
+      regionHtml += '<td>' + regionMeteo.sky + '</td>';
+      regionHtml += '<td>' + regionMeteo.wind + '</td>';
+      regionHtml += '</tr>';
+      $('#meteo-table > tbody').append(regionHtml);
+    }
+  }
+
+  function reset() {
+    console.log("Reset meteo from wordl data...");
+  }
+
+  function generate() {
+    console.log("Generate meteo...");
+    $.ajax({
+      method: "GET",
+      url: 'http://localhost:3000/reset',
+      dataType: 'json',
+      success: function(json) {
+        if (json.success) {
+          var meteo = json.meteo;
+          console.log(meteo);
+          parseMeteo(meteo);
+        }
+      }
+    });
+  }
+
+  function next() {
+    console.log("Next day...");
+  }
+  </script>
+</body>
+</html>
