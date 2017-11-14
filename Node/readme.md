@@ -24,6 +24,8 @@ Usage
 
 Your server is now running. Access to it on `localhost:3000/`.
 
+You can access to a simple dashboard by opening the `index.html` located in `/interface/`.
+
 ### Endpoints
 | address | method | description |
 | ------- | ------ | ----------- |
