@@ -31,6 +31,11 @@
     </div>
   </div>
 
+  <div id="container">
+    <button class="btn btn-outline-warning" type="submit" onClick="getWorldParams()">Get world</button>
+    <textarea id="world-params"></textarea>
+  </div>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
@@ -86,6 +91,22 @@
 
   function next() {
     console.log("Next day...");
+  }
+
+  function getWorldParams() {
+    console.log("Get World params...");
+    $.ajax({
+      method: "GET",
+      url: 'http://localhost:3000/world',
+      dataType: 'json',
+      success: function(json) {
+        if (json.success) {
+          var world = json.world;
+          console.log(world);
+          $('#world-params').val(JSON.stringify(world));
+        }
+      }
+    });
   }
   </script>
 </body>

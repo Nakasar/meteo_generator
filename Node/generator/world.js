@@ -6,13 +6,16 @@ class World {
 
   constructor() {
     this.regions = new Map();
+    this.params = {};
   }
 
   createMap() {
     if (worldjson) {
-      console.log(worldjson);
-      for (var i = 0; i < worldjson.length; i++) {
-        this.regions.set(worldjson[i].region_name, Region.parse(worldjson[i]));
+      this.params = worldjson;
+      if (this.params.regions) {
+        for (var i = 0; i < worldjson.regions.length; i++) {
+          this.regions.set(worldjson.regions[i].region_name, Region.parse(worldjson.regions[i]));
+        }
       }
     }
   }

@@ -20,6 +20,16 @@ app.get('/', function(req, res) {
   return res.json({ success: true, message: "Welcome on GW2RP meteo generator."});
 });
 
+app.get('/world', function(req, res) {
+  if (!generator) {
+    return res.json({ success: false, message: "Generator is out of service." });
+  }
+
+  var world = generator.world.params;
+
+  return res.json({ success: true, world: world });
+})
+
 // Change to POST and add Auth
 app.get('/reset', function(req, res) {
   if (!generator) {

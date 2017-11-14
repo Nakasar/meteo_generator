@@ -1,27 +1,29 @@
-[
-  {
-    "region_name": "Krytia",
-    "region_id": 1,
-    "seasons": [
+{
+    "regions": [
       {
-        "season_name" : "Summer",
-        "max_temperature": 30,
-        "min_temperature": 10,
-        "skies": [
+        "region_name": "Krytia",
+        "region_id": 1,
+        "seasons": [
           {
-            "name": "Sunny",
-            "probability": 0.753
-          },
-          {
-            "name": "Rainy",
-            "probability": 0.125
+            "season_name" : "Summer",
+            "max_temperature": 30,
+            "min_temperature": 10,
+            "skies": [
+              {
+                "name": "Sunny",
+                "probability": 0.753
+              },
+              {
+                "name": "Rainy",
+                "probability": 0.125
+              }
+            ]
           }
         ]
+      },
+      {
+        "region_name": "Ascalon",
+        "region_id": 16
       }
     ]
-  },
-  {
-    "region_name": "Ascalon",
-    "region_id": 16
-  }
-]
+}

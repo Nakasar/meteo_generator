@@ -28,6 +28,7 @@ Your server is now running. Access to it on `localhost:3000/`.
 | address | method | description |
 | ------- | ------ | ----------- |
 | **/**   | GET    | Check if server is up and running ! |
+| **/world** | GET | Get current world params as json. |
 | **/reset** | POST | Reset meteo from scratch. |
 | **/all** | GET   | Get full world meteo as json. |
 | **/\<regionId\>** | GET | Get meteo as json for the given region. |
@@ -35,33 +36,35 @@ Your server is now running. Access to it on `localhost:3000/`.
 ### World creation
 The world is created upon a written json file on the server. It contains a list of region with their parameters.
 ```javascript
-[
-  {
-    "region_name": "Krytia",
-    "region_id": 1,
-    "seasons": [
-      {
-        "season_name" : "Summer",
-        "max_temperature": 30,
-        "min_temperature": 10,
-        "skies": [
-          {
-            "name": "Sunny",
-            "probability": 0.753
-          },
-          {
-            "name": "Rainy",
-            "probability": 0.125
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "region_name": "Ascalon",
-    "region_id": 16
-  }
-]
+{
+  "regions": [
+    {
+      "region_name": "Krytia",
+      "region_id": 1,
+      "seasons": [
+        {
+          "season_name" : "Summer",
+          "max_temperature": 30,
+          "min_temperature": 10,
+          "skies": [
+            {
+              "name": "Sunny",
+              "probability": 0.753
+            },
+            {
+              "name": "Rainy",
+              "probability": 0.125
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "region_name": "Ascalon",
+      "region_id": 16
+    }
+  ]
+}
 ```
 
 ### Data Format
