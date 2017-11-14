@@ -29,7 +29,7 @@ Your server is now running. Access to it on `localhost:3000/`.
 | ------- | ------ | ----------- |
 | **/**   | GET    | Check if server is up and running ! |
 | **/world** | GET | Get current world params as json. |
-| **/reset** | POST | Reset meteo from scratch. |
+| **/generate** | POST | Reset meteo from scratch. |
 | **/all** | GET   | Get full world meteo as json. |
 | **/\<regionId\>** | GET | Get meteo as json for the given region. |
 
