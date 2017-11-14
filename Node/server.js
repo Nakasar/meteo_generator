@@ -31,7 +31,7 @@ app.get('/world', function(req, res) {
 })
 
 // Change to POST and add Auth
-app.get('/reset', function(req, res) {
+app.post('/reset', function(req, res) {
   if (!generator) {
     return res.json({ success: false, message: "Generator is out of service." });
   }

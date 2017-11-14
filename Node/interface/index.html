@@ -76,9 +76,10 @@
   function generate() {
     console.log("Generate meteo...");
     $.ajax({
-      method: "GET",
+      method: "POST",
       url: 'http://localhost:3000/reset',
       dataType: 'json',
+      data: {  },
       success: function(json) {
         if (json.success) {
           var meteo = json.meteo;
