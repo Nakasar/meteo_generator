@@ -68,7 +68,7 @@ The world is created upon a written json file on the server. It contains a list 
 ```
 
 ### Data Format
-All endpoints returns json data containing a boplean success field.
+All endpoints returns json data containing a boolean success field.
 
 When requesting meteo for a given region, you will receive a json containing the following fields :
 
@@ -85,13 +85,15 @@ When requesting meteo for a given region, you will receive a json containing the
   region_name: "Queensdale",
   region_id: 1,
   generated: true,
-  wind: "none",
-  temperature: 25,
-  sky: "sunny"
+  data: {
+    wind: "none",
+    temperature: 25,
+    sky: "sunny"
+  }
 }
 ```
 
-When requesting the `/all` endpoint, or several regions, you will recieved a json Object indexed by the names of regions :
+When requesting the `/all` endpoint, or several regions, you will receive a json Object indexed by the names of regions :
 ```javascript
 [
   "Queensdale" : {
@@ -99,18 +101,22 @@ When requesting the `/all` endpoint, or several regions, you will recieved a jso
     region_name: "Queensdale",
     region_id: 1,
     generated: true,
-    wind: "none",
-    temperature: 25,
-    sky: "sunny"
+    data: {
+      wind: "none",
+      temperature: 25,
+      sky: "sunny"
+    }
   },
   "Rata Sum": {
   {
     region_name: "Rata Sum",
     region_id: 16,
     generated: true,
-    wind: "Strong North Cold",
-    temperature: 15,
-    sky: "Rainy"
+    data: {
+      wind: "Strong North Cold",
+      temperature: 15,
+      sky: "Rainy"
+    }
   }
 ]
 ```

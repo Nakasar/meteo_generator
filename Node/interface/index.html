@@ -13,11 +13,7 @@
     <table class="table" id="meteo-table">
       <thead>
         <tr>
-          <th scope="col">id</th>
-          <th scope="col">Region</th>
-          <th scope="col">Temperature</th>
-          <th scope="col">Sky</th>
-          <th scope="col">Wind</th>
+
         </tr>
       </thead>
       <tbody>
@@ -53,24 +49,45 @@
       }
     }
   });
-
+  var m;
   function parseMeteo(meteo) {
+    $('#meteo-table > thead > tr').remove();
     $('#meteo-table > tbody > tr').remove();
+
+    // Get data fields
+    var fields = ["id", "Region"];
+    if (Object.keys(meteo).length > 0 && meteo[Object.keys(meteo)[0]].data) {
+      fields = fields.concat(Object.keys(meteo[Object.keys(meteo)[0]].data));
+    }
+    $('#meteo-table > thead').append('<tr>');
+    for (var field in fields) {
+      $('#meteo-table > thead > tr').append('<th scope="col">' + fields[field] + '</th>');
+    }
+    $('#meteo-table > thead').append('</tr>');
+    
     for(var region in meteo) {
       var regionMeteo = meteo[region];
+
       var regionHtml = '<tr>';
       regionHtml += '<th scope="col">' + regionMeteo.region_id + '</th>';
       regionHtml += '<td>' + regionMeteo.region_name + '</td>';
-      regionHtml += '<td>' + regionMeteo.temperature + '</td>';
-      regionHtml += '<td>' + regionMeteo.sky + '</td>';
-      regionHtml += '<td>' + regionMeteo.wind + '</td>';
+      if (regionMeteo.generated) {
+        var data = regionMeteo.data;
+        for (var field in fields) {
+          if (data[fields[field]]) {
+            regionHtml += '<td id="' + fields[field] + '">' + data[fields[field]] + '</td>';
+          }
+        }
+      } else {
+        regionHtml += '<td id="not-generated">Not generated</td>';
+      }
       regionHtml += '</tr>';
       $('#meteo-table > tbody').append(regionHtml);
     }
   }
 
   function reset() {
-    console.log("Reset meteo from wordl data...");
+    console.log("Reset meteo from world data...");
   }
 
   function generate() {

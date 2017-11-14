@@ -29,10 +29,14 @@ class Region {
     json["generated"] = this.generated;
 
     if (this.generated) {
+      var data = { };
+
       // Fill JSON with data
-      json["temperature"] = this.temperature;
-      json["wind"] = this.wind;
-      json["sky"] = this.sky;
+      data["temperature"] = this.temperature;
+      data["wind"] = this.wind;
+      data["sky"] = this.sky;
+
+      json["data"] = data;
     }
 
     return json;
