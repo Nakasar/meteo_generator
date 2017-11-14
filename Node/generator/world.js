@@ -40,7 +40,7 @@ class World {
 
     return mapJson;
   }
-
+  
 }
 
 module.exports = World;

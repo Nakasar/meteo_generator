@@ -8,28 +8,33 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 </head>
 <body>
-  <div id="container">
+  <div class="container-fluid" style="margin-bottom: 15px;">
     <h1>Meteo</h1>
-    <table class="table" id="meteo-table">
-      <thead>
-        <tr>
 
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
+    <div class="container-fluid">
+      <table class="table" id="meteo-table">
+        <thead>
+          <tr>
 
-    <div id="container">
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+
+    <div class="container-fluid" id="meteo-table-actions">
       <button class="btn btn-danger" type="submit" onClick="reset()">Reset</button>
       <button class="btn btn-success" type="submit" onClick="generate()">Generate</button>
       <button class="btn btn-outline-primary" type="submit" onClick="next()">Next Day</button>
     </div>
   </div>
 
-  <div id="container">
+  <div class="container-fluid" id="get-world">
     <button class="btn btn-outline-warning" type="submit" onClick="getWorldParams()">Get world</button>
-    <textarea id="world-params"></textarea>
+    <br>
+    <textarea class="form-control" id="world-params" style="height: 200px;"></textarea>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
@@ -64,7 +69,7 @@
       $('#meteo-table > thead > tr').append('<th scope="col">' + fields[field] + '</th>');
     }
     $('#meteo-table > thead').append('</tr>');
-    
+
     for(var region in meteo) {
       var regionMeteo = meteo[region];
 
@@ -121,7 +126,7 @@
         if (json.success) {
           var world = json.world;
           console.log(world);
-          $('#world-params').val(JSON.stringify(world));
+          $('#world-params').val(JSON.stringify(json, null, 4));
         }
       }
     });
