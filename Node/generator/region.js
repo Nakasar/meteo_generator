@@ -14,9 +14,27 @@ class Region {
 
   generate() {
     // generate data for this region
-    this.temperature = 15;
-    this.wind = "none";
-    this.sky = "sunny";
+    //TODO: Replace by appropriate generation
+
+    this.temperature = Math.floor(Math.random() * 30) + 1;
+    // generate wind
+    var randomizeWind = Math.random();
+    if (randomizeWind > 0.8) {
+      this.wind = "north cold";
+    } else if (randomizeWind > 0.6) {
+      this.wind = "north hot"
+    } else {
+      this.wind = "none"
+    }
+    // generate sky
+    var randomizeSky = Math.random();
+    if (randomizeSky > 0.5) {
+      this.sky = "sunny";
+    } else if (randomizeWind > 0.4) {
+      this.sky = "rainy"
+    } else {
+      this.sky = "grey"
+    }
 
     this.generated = true;
   }
